@@ -3,7 +3,14 @@
   justify-content: center;
   align-items: center;
   height: 100vh;
-  background: #f5f5f5;
+}
+.themelight{
+    height: screen;
+    background-color: white;
+}
+.themedark{
+    height:100vh;
+    background-color: rgb(48, 46, 46);
 }
 
 .div > div {
@@ -24,6 +31,21 @@
   display: flex;
   gap: 12px;
   justify-content: center;
+}
+
+.toggle {
+    position: fixed;
+    bottom: 10px;
+    right: 10px;
+  width: 60px;
+  height: 60px;
+  font-size: 1.5rem;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  background: #4f46e5;
+  color: white;
+  transition: background 0.2s ease, transform 0.1s ease;
 }
 
 .btn button {
