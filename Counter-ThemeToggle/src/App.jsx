@@ -6,14 +6,29 @@ import './App.css'
 function App() {
   const [count, setCount] = useState(0)
 
+  const handleIncrease=() => {
+    setCount(c=>c+1)
+  }
+  const handleDecrease=() => {
+    setCount(c=>c-1)
+  }
+  const handleReset=() => {
+    setCount(0)
+  }
+  
+  
+  
   return (
     <>
       <div className="div">
         <div>
           <div>{count}</div>
         <div className="btn">
-          <button onClick={}>+</button>
-        <button>-</button>
+          <button onClick={handleIncrease}>+</button>
+        <button onClick={handleDecrease}>-</button>
+        </div>
+        <div className="btn2">
+          <button onClick={handleReset}>Reset</button>
         </div>
         </div>
       </div>
