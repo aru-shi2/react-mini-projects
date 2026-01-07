@@ -14,10 +14,20 @@ function App() {
   const Add=() => {
     const t={id:uuidv4(),todo:Todo}
     const oldtodo=JSON.parse(localStorage.getItem('todos'))||[]
-    setTodos(oldtodo)
     const alltodo=[...oldtodo,t]
     setTodos(alltodo)
     localStorage.setItem('todos',JSON.stringify(alltodo))  
+    setTodo("")
+  }
+  
+  const Edit=() => {
+    sdgv
+  }
+  
+  const Delete=(id) => {
+    const ts=Todos.filter(n=>n.id!=id)
+    setTodos(ts)
+    localStorage.setItem('todos',JSON.stringify(ts))  
     setTodo("")
   }
   
@@ -34,7 +44,10 @@ function App() {
             </div>
             <ul className="todos">
               {Todos.map((item)=>(
-                <li key={item.id}>{item.todo}</li>
+                <li key={item.id}>{item.todo}
+                <button onClick={Edit}>Edit</button>
+                <button onClick={()=>Delete(item.id)}>Delete</button>
+                </li>
               ))}
             </ul>
           </div>
