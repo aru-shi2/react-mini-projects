@@ -1,33 +1,45 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
+import { useState,useEffect } from 'react'
 import './App.css'
+import {v4 as uuidv4} from 'uuid';
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [Todo, setTodo] = useState("")
+  const [Todos, setTodos] = useState([])
+
+  useEffect(() => {
+      const oldtodo=JSON.parse(localStorage.getItem('todos'))||[]
+    setTodos(oldtodo)
+    }, [])
+
+  const Add=() => {
+    const t={id:uuidv4(),todo:Todo}
+    const oldtodo=JSON.parse(localStorage.getItem('todos'))||[]
+    setTodos(oldtodo)
+    const alltodo=[...oldtodo,t]
+    setTodos(alltodo)
+    localStorage.setItem('todos',JSON.stringify(alltodo))  
+    setTodo("")
+  }
+  
 
   return (
     <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
+      <div className="box">
+        <div className="content">
+          <div className="main">
+            <h1>Todo App</h1>
+            <div className="input">
+              <input onChange={(e)=>setTodo(e.target.value)} value={Todo} type="text" placeholder='Enter Todo...' />
+              <button onClick={Add}>Add</button>
+            </div>
+            <ul className="todos">
+              {Todos.map((item)=>(
+                <li key={item.id}>{item.todo}</li>
+              ))}
+            </ul>
+          </div>
+        </div>
       </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
     </>
   )
 }
