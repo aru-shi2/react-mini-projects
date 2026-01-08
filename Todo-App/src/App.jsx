@@ -75,8 +75,10 @@ function App() {
             <ul className="todos">
               {Todos.map((item)=>(
                   <li key={item.id}>{item.todo}
-                <button onClick={()=>Edit(item.id)}>Edit</button>
+                <div className="btn">
+                  <button onClick={()=>Edit(item.id)}>Edit</button>
                 <button onClick={()=>Delete(item.id)}>Delete</button>
+                </div>
                 </li>
                 ))}
             </ul>

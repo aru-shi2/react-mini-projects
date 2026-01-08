@@ -1,0 +1,129 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+
+body {
+  min-height: 100vh;
+  background: #eef2f6;
+}
+
+
+.box {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+
+.content {
+  width: 100%;
+  max-width: 480px;
+  padding: 20px;
+}
+
+
+.main {
+  background: #ffffff;
+  padding: 26px;
+  border-radius: 12px;
+  box-shadow: 0 10px 22px rgba(0, 0, 0, 0.12);
+}
+
+
+.main h1 {
+  text-align: center;
+  margin-bottom: 20px;
+  color: #222;
+}
+
+
+.input {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.input input {
+  flex: 1;
+  padding: 10px 12px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  font-size: 14px;
+}
+
+.input input:focus {
+  outline: none;
+  border-color: #555;
+}
+
+.input button {
+  padding: 10px 14px;
+  border: none;
+  background: #333;
+  color: #fff;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+
+.todos {
+  list-style: none;
+}
+
+
+.todos li {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px 0;
+  border-bottom: 1px solid #eee;
+  color: #333;
+}
+
+
+.todos li:last-child {
+  border-bottom: none;
+}
+
+
+.todos li button {
+  margin-left: 6px;
+  padding: 5px 10px;
+  font-size: 12px;
+  border: 1px solid #ccc;
+  background: #fff;
+  cursor: pointer;
+  border-radius: 4px;
+}
+
+
+.todos li button:hover {
+  background: #f2f2f2;
+}
+
+@media (max-width: 480px) {
+  .input {
+    flex-direction: column;
+  }
+
+  .input input,
+  .input button {
+    width: 100%;
+  }
+
+  .todos li {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 6px;
+  }
+
+  .todos li button {
+    width: 100%;
+  }
+}
