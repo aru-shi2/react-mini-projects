@@ -1,27 +1,57 @@
-import { useState,useEffect } from 'react'
+import { useState, useEffect } from 'react'
 import './App.css'
 import {v4 as uuidv4} from 'uuid';
 
 function App() {
   const [Todo, setTodo] = useState("")
   const [Todos, setTodos] = useState([])
-
+  const [edit, setedit] = useState(null)
   useEffect(() => {
-      const oldtodo=JSON.parse(localStorage.getItem('todos'))||[]
-    setTodos(oldtodo)
+      const data=localStorage.getItem('todos')
+      if(data){
+        setTodos(JSON.parse(data))
+      }else{
+        setTodos([])
+      }
     }, [])
 
+  useEffect(() => {
+    if(Todos.length>0){
+      localStorage.setItem("todos",JSON.stringify(Todos))
+    }
+  }, [Todos]) 
+
   const Add=() => {
+    if(!Todo){
+      alert('enter todo')
+    }
+    else if(Todo && edit){
+      setTodos(
+        Todos.map((t)=>{
+          if(t.id===edit){
+            return {...t,todo:Todo}
+          }
+          return t
+        }))
+        setTodo("")
+        setedit(null)
+    }
+    else{
     const t={id:uuidv4(),todo:Todo}
     const oldtodo=JSON.parse(localStorage.getItem('todos'))||[]
     const alltodo=[...oldtodo,t]
     setTodos(alltodo)
     localStorage.setItem('todos',JSON.stringify(alltodo))  
     setTodo("")
+    }
   }
   
-  const Edit=() => {
-    sdgv
+  const Edit=(id) => {
+    let newtodo=Todos.find((i)=>{
+      return i.id===id;
+    })
+    setTodo(newtodo.todo)
+    setedit(id)
   }
   
   const Delete=(id) => {
@@ -44,11 +74,11 @@ function App() {
             </div>
             <ul className="todos">
               {Todos.map((item)=>(
-                <li key={item.id}>{item.todo}
-                <button onClick={Edit}>Edit</button>
+                  <li key={item.id}>{item.todo}
+                <button onClick={()=>Edit(item.id)}>Edit</button>
                 <button onClick={()=>Delete(item.id)}>Delete</button>
                 </li>
-              ))}
+                ))}
             </ul>
           </div>
         </div>
