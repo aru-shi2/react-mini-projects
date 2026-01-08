@@ -19,7 +19,7 @@ function App() {
     if(Todos.length>0){
       localStorage.setItem("todos",JSON.stringify(Todos))
     }
-  }, [Todos]) 
+  }, [Todos])
 
   const Add=() => {
     if(!Todo){
@@ -70,7 +70,7 @@ function App() {
             <h1>Todo App</h1>
             <div className="input">
               <input onChange={(e)=>setTodo(e.target.value)} value={Todo} type="text" placeholder='Enter Todo...' />
-              <button onClick={Add}>Add</button>
+              <button onClick={Add}>Add Todo</button>
             </div>
             <ul className="todos">
               {Todos.map((item)=>(
