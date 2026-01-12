@@ -5,24 +5,28 @@ function App() {
   const [Username, setUsername] = useState("")
   const [Details, setDetails] = useState(null)
   const [Loading, setLoading] = useState(false)
+  const [error, seterror] = useState("")
 
     const fetchData=async () => {
-      if(Username){
-        setLoading(true)
-        const data=await fetch(`https://api.github.com/users/${Username}`)
-        if(data.status===404){
-          throw new Error("404 Not Found!!");
-        }
-        const res=await data.json()
-        setDetails(res)
+        if(Username){
+          try{
+            setLoading(true)
+            const data=await fetch(`https://api.github.com/users/${Username}`)
+          if(data.status===404){
+            throw new Error("404 Not Found!!");
+          }
+          const res=await data.json()
+          setDetails(res)
+          setLoading(false)
+        } catch (err) {
+        seterror(err.message)
         setLoading(false)
-
       }
-       else{
-        <div>Not found!!</div>
-      }
+        }
+         else{
+        alert("Enter username!!")
     }
-    
+    }  
 
   return (
     <>
@@ -35,6 +39,7 @@ function App() {
           </div>
           <div className="data">
             {Loading && <p>Loading...</p>}
+            {error && <p>{error}</p>}
             {Details && (
                <div>
                 <div className="img">
