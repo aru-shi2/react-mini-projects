@@ -13,7 +13,7 @@ function App() {
             setLoading(true)
             const data=await fetch(`https://api.github.com/users/${Username}`)
           if(data.status===404){
-            throw new Error("404 Not Found!!");
+            throw new Error("Not Found!!");
           }
           const res=await data.json()
           setDetails(res)
@@ -46,8 +46,17 @@ function App() {
                   <img src={Details.avatar_url} alt="" />
                 </div>
                 <div className="content">
-                  <div className="name"><h2>Name</h2>{Details.name} {Details.login} <h2>Bio</h2>{Details.bio}</div>
-                  <div className="follow"><h2>Followers</h2>{Details.followers} <h2>Following</h2>{Details.following} <h2>Repositories</h2>{Details.public_repos}</div>
+                  <div className="name">
+  <span>{Details.name}</span>
+  <span>@{Details.login}</span>
+  <span>{Details.bio}</span>
+</div>
+
+<div className="follow">
+  <span>Followers: {Details.followers}</span>
+  <span>Following: {Details.following}</span>
+  <span>Repos: {Details.public_repos}</span>
+</div>
                   <div className="location"><h2>Location</h2>{Details.location}</div>
                 </div>
               </div>
