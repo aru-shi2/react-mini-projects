@@ -12,7 +12,7 @@ body {
   width: 100vw;
   height: 100vh;
   overflow: hidden;
-  background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+  background: linear-gradient(135deg, #24424e, #0a242c, #2c5364);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -40,9 +40,9 @@ body {
 
 .content {
   width: 100%;
-  max-width: 1100px;
-  height: calc(100% - 80px);
-  background: linear-gradient(160deg, #ffffff, #f1f5f9);
+  max-width: 1000px;
+  height: calc(90% - 70px);
+  background:#869799;
   border-radius: 25px;
   padding: 30px;
   box-shadow: 0 30px 60px rgba(0, 0, 0, 0.35);
@@ -102,7 +102,7 @@ body {
 
 
 .data p:has(*) {
-  color: red;
+  color: rgb(80, 72, 72);
 }
 
 
@@ -145,54 +145,96 @@ body {
   gap: 6px;
 }
 
-.name h2 {
-  font-size: 28px;
-  font-weight: 700;
+.name #name {
+  font-style:normal;  
+  font-size: 30px;
+  font-weight:bold;
   color: #0f172a;
 }
 
-.username {
+.name #login {
   font-size: 16px;
-  color: #2563eb;
+  color: #1b5ce7;
   font-weight: 600;
 }
 
-.bio {
+.name #bio {
   font-size: 15px;
   color: #475569;
   max-width: 500px;
 }
 
 
-.follow {
+.follow{
   display: flex;
-  gap: 20px;
-}
-
-.follow span {
-  background: linear-gradient(135deg, #22c55e, #16a34a);
+  gap: 150px;
+  justify-content: center;
+  align-items: center;
+  background:#434444c2;
   color: #ffffff;
-  padding: 18px 24px;
-  border-radius: 18px;
+  padding: 18px 15px;
+  border-radius: 10px;
   font-weight: 700;
-  min-width: 140px;
+  min-height: 90px;
+  min-width: 120px;
   text-align: center;
   box-shadow: 0 10px 30px rgba(34, 197, 94, 0.4);
 }
 
-.follow span:nth-child(2) {
-  background: linear-gradient(135deg, #f97316, #ea580c);
+
+.bottom {
+  display: grid;
+  flex-wrap: wrap;
+  grid-template-columns: repeat(2,3fr);
+  gap: 20px;
+  margin-top: 12px;
 }
 
-.follow span:nth-child(3) {
-  background: linear-gradient(135deg, #a855f7, #7c3aed);
+.bottom span {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+  color: #4b5563; 
+  background: #f9fafb;
+  padding: 6px 10px;
+  border-radius: 6px;
+  word-break: break-word;
 }
 
+.bottom span svg {
+  font-size: 16px;
+  color: #2563eb;
+}
 
-.location {
-  font-size: 15px;
-  color: #1e293b;
-  font-weight: 600;
+/* Hover effect (optional) */
+.bottom span:hover {
+  background: #eef2ff;
+}
+
+/* 📱 Mobile */
+@media (max-width: 768px) {
+  .bottom {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .bottom span {
+    width: 100%;
+    font-size: 13px;
+  }
+}
+
+/* 📱 Very small screens */
+@media (max-width: 480px) {
+  .bottom span {
+    padding: 6px 8px;
+    font-size: 12.5px;
+  }
+
+  .bottom span svg {
+    font-size: 14px;
+  }
 }
 
 

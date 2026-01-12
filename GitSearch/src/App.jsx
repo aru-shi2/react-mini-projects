@@ -1,5 +1,7 @@
 import { useState,useEffect } from 'react'
 import './App.css'
+import { FaXTwitter,FaLocationDot,FaLink,FaBuilding } from "react-icons/fa6";
+import { MdOutlineEmail } from "react-icons/md";
 
 function App() {
   const [Username, setUsername] = useState("")
@@ -18,6 +20,7 @@ function App() {
           const res=await data.json()
           setDetails(res)
           setLoading(false)
+          console.log(res)
         } catch (err) {
         seterror(err.message)
         setLoading(false)
@@ -47,17 +50,23 @@ function App() {
                 </div>
                 <div className="content">
                   <div className="name">
-  <span>{Details.name}</span>
-  <span>@{Details.login}</span>
-  <span>{Details.bio}</span>
+  <span id="name">{Details.name}</span>
+  <a id='login' href={Details.html_url}>@{Details.login}</a>
+  <span id="bio">{Details.bio}</span>
 </div>
 
 <div className="follow">
-  <span>Followers: {Details.followers}</span>
-  <span>Following: {Details.following}</span>
-  <span>Repos: {Details.public_repos}</span>
+  <span><h4>Followers</h4> {Details.followers}</span>
+  <span><h4>Following</h4> {Details.following}</span>
+  <span><h4>Repos</h4> {Details.public_repos}</span>
 </div>
-                  <div className="location"><h2>Location</h2>{Details.location}</div>
+                  <div className="bottom">
+                  {Details.location &&  <span><FaLocationDot /> {Details.location}</span>}
+                  {Details.email &&  <span><MdOutlineEmail /> {Details.email}</span>}
+                  {Details.twitter_username &&  <span><FaXTwitter /> {Details.twitter_username}</span>}
+                  {Details.blog &&  <span><FaLink/><a href={Details.blog}>{Details.blog}</a></span>}
+                  {Details.company &&  <span><FaBuilding /> {Details.company}</span>}
+                  </div>
                 </div>
               </div>
             )}
