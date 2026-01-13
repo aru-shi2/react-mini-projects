@@ -212,45 +212,119 @@ body {
   background: #eef2ff;
 }
 
-/* 📱 Mobile */
+/* ========================= */
+/* RESPONSIVE STYLES ONLY   */
+/* ========================= */
+
+/* Tablets & small laptops */
+@media (max-width: 1024px) {
+  .content {
+    max-width: 90%;
+    padding: 25px;
+  }
+
+  .data > div {
+    gap: 25px;
+  }
+
+  .follow {
+    gap: 80px;
+  }
+}
+
+
+/* Tablets & large phones */
 @media (max-width: 768px) {
-  .bottom {
+  body {
+    overflow-y: auto;
+  }
+
+  .box h1 {
+    font-size: 28px;
+    text-align: center;
+  }
+
+  .content {
+    height: auto;
+  }
+
+  .input {
     flex-direction: column;
-    gap: 10px;
   }
 
-  .bottom span {
+  .input button {
     width: 100%;
-    font-size: 13px;
-  }
-}
-
-/* 📱 Very small screens */
-@media (max-width: 480px) {
-  .bottom span {
-    padding: 6px 8px;
-    font-size: 12.5px;
   }
 
-  .bottom span svg {
-    font-size: 14px;
-  }
-}
-
-
-@media (max-width: 900px) {
   .data > div {
     flex-direction: column;
     text-align: center;
   }
 
   .img img {
-    width: 160px;
-    height: 160px;
+    width: 180px;
+    height: 180px;
+  }
+
+  .name #name {
+    font-size: 26px;
+  }
+
+  .name #bio {
+    max-width: 100%;
   }
 
   .follow {
-    justify-content: center;
-    flex-wrap: wrap;
+    gap: 40px;
+    padding: 15px;
+  }
+
+  .bottom {
+    grid-template-columns: 1fr;
+  }
+}
+
+
+/* Mobile phones */
+@media (max-width: 480px) {
+  .box {
+    padding: 15px;
+  }
+
+  .box h1 {
+    font-size: 24px;
+  }
+
+  .content {
+    padding: 20px;
+    border-radius: 18px;
+  }
+
+  .img img {
+    width: 150px;
+    height: 150px;
+    border-width: 6px;
+  }
+
+  .name #name {
+    font-size: 22px;
+  }
+
+  .name #login {
+    font-size: 14px;
+  }
+
+  .name #bio {
+    font-size: 14px;
+  }
+
+  .follow {
+    flex-direction: column;
+    gap: 10px;
+    min-height: auto;
+  }
+
+  .bottom span {
+    font-size: 13px;
   }
 }
